@@ -4,184 +4,662 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sameer Alam - Resume</title>
+  <meta name="description" content="Resume of Sameer Alam - DevOps Engineer and Web Developer with experience in Python, Django, AWS, Kubernetes, Docker, and more.">
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom Eye Catch CSS -->
+  <!-- Bootstrap Icons for clickable icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- External CSS (optional, move custom CSS here for better performance) -->
+  <link rel="stylesheet" href="styles.css">
   <style>
+    /* Optimized Custom CSS. Consider moving this to styles.css */
+    :root {
+      --primary-color: #0d6efd;
+      --primary-hover: #0a58ca;
+      --bg-light: #f8f9fa;
+      --text-color: #343a40;
+      --card-bg: #fff;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-medium: rgba(0,0,0,0.1);
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #343a40;
+      background: var(--bg-light);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    .header {
-      background-color: #343a40;
-      color: #fff;
-      padding: 2rem 0;
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover { 
+      color: var(--primary-hover);
+    }
+    /* Navigation Bar */
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 4px var(--shadow-light);
+    }
+    .navbar-nav .nav-link {
+      padding: 1rem;
+      font-weight: 500;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #e9ecef, #ffffff);
       text-align: center;
+      padding: 3rem 1rem;
+      box-shadow: 0 6px 12px var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
     }
-    .header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    header::after {
+      content: "";
+      position: absolute;
+      top: -20%; left: -20%;
+      width: 140%; height: 140%;
+      background: radial-gradient(circle, rgba(13,110,253,0.05), transparent 70%);
+      animation: pulse 8s infinite;
+      z-index: 0;
     }
-    .header p {
-      font-size: 1.2rem;
-      margin-bottom: 0;
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
-    .section-title {
-      border-bottom: 2px solid #343a40;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      color: #343a40;
+    header .container { position: relative; z-index: 1; }
+    header h1 { font-size: 3.2rem; margin-bottom: 0.5rem; animation: slideIn 1s ease-out; }
+    header p.headline { font-size: 1.3rem; font-weight: 300; animation: fadeIn 2s ease-out; }
+    @keyframes slideIn { 
+      from { transform: translateY(-20px); opacity: 0; } 
+      to { transform: translateY(0); opacity: 1; } 
+    }
+    @keyframes fadeIn { 
+      from { opacity: 0; } 
+      to { opacity: 1; } 
+    }
+    /* Main Content */
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     .content-section {
+      background: var(--card-bg);
+      padding: 2rem;
       margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px var(--shadow-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .experience, .education, .projects {
+    .content-section:hover { 
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px var(--shadow-medium);
+    }
+    .section-title {
+      font-size: 1.8rem;
       margin-bottom: 1.5rem;
+      font-weight: 600;
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      position: relative;
     }
-    .skills li {
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+      border-radius: 2px;
+    }
+    ul.skills {
       list-style: none;
-      margin: 0.3rem 0;
+      padding: 0;
     }
-    .custom-link a {
-      color: #007bff;
-      text-decoration: none;
+    ul.skills li {
+      display: inline-block;
+      background: #e9ecef;
+      padding: 0.4rem 0.8rem;
+      margin: 0.3rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: background 0.3s, transform 0.3s;
     }
-    .custom-link a:hover {
-      text-decoration: underline;
+    ul.skills li:hover { 
+      background: #ced4da;
+      transform: scale(1.05);
+    }
+    .certification-card { 
+      border: none; 
+      border-radius: 10px; 
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .certification-card:hover { 
+      box-shadow: 0 4px 12px var(--shadow-medium);
+      transform: translateY(-3px);
+    }
+    /* Footer */
+    footer {
+      background: #e9ecef;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
+    /* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px var(--shadow-light);
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background: var(--primary-hover);
+      transform: scale(1.1);
+    }
+    @media (max-width: 576px) {
+      header h1 { font-size: 2.4rem; }
+      header p.headline { font-size: 1rem; }
+      .section-title { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation Menu -->
+  <nav class="navbar navbar-expand-lg sticky-top" aria-label="Main Navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#">Resume</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <!-- Header Section -->
-  <header class="header">
+  <header>
     <div class="container">
-      <h1>SAMEER ALAM</h1>
-      <p>Site Reliability Engineer</p>
+      <h1>Sameer Alam</h1>
+      <p class="headline">
+        DevOps Engineer | Python, Django, HTML, CSS | CI/CD | AWS, Kubernetes, Docker, Ansible | SRE &amp; Cloud Certified | Web Developer
+      </p>
     </div>
   </header>
 
   <!-- Main Content -->
-  <div class="container my-5">
+  <main>
     <!-- Profile Summary -->
-    <section class="content-section">
-      <h2 class="section-title">Profile Summary</h2>
-      <p>Experienced System Administrator with a strong background in managing large-scale Linux, Unix, and Windows environments. Proficient in automation, containerization, and security hardening, ensuring compliance with industry standards. Skilled in infrastructure monitoring, deployment orchestration, and process optimization using scripting and automation tools. Adept at troubleshooting complex system, network, and security issues while maintaining high availability and performance.</p>
+    <section class="content-section" id="profile" aria-labelledby="profile-heading">
+      <h2 class="section-title" id="profile-heading">Profile Summary</h2>
+      <p>
+        Accomplished System Administrator, DevOps Engineer, and Web Developer with over 6 years of experience managing large-scale Linux, Unix, and Windows environments. Proven ability to reduce system downtime by <strong>30%</strong> through effective automation, containerization, and security hardening measures.
+      </p>
+      <p>
+        Adept at orchestrating robust CI/CD pipelines, I have also developed dynamic web applications using <strong>Python</strong>, <strong>Django</strong>, <strong>HTML5</strong>, and <strong>CSS3</strong>—deploying and automating workflows with GitHub Actions. I am continuously expanding my expertise with industry-leading tools and technologies.
+      </p>
     </section>
 
     <!-- Work Experience -->
-    <section class="content-section">
-      <h2 class="section-title">Work Experience</h2>
+    <section class="content-section" id="experience" aria-labelledby="experience-heading">
+      <h2 class="section-title" id="experience-heading">Work Experience</h2>
       
-      <!-- IBM Experience -->
-      <div class="experience">
+      <!-- SRE DevOps Experience at IBM -->
+      <div class="mb-4">
         <h3>Site Reliability Engineer - IBM <small class="text-muted">(Jun 2021 - Present)</small></h3>
         <ul>
-          <li>Managed and maintained over 500 servers running RHEL, AIX, SUSE, Ubuntu, Debian, and Windows operating systems.</li>
-          <li>Applied patches and updates using shell scripts and Ansible; fixed vulnerabilities reported by Nessus Tenable.</li>
-          <li>Installed and renewed SSL certificates, and implemented Endpoint Detection and Response (EDR) solutions.</li>
-          <li>Monitored system activities and logs to ensure optimal security and performance using Nagios.</li>
-          <li>Created Wiki.js server and GitHub (Mkdocs) for comprehensive infrastructure documentation.</li>
-          <li>Developed a complaint tool using API and shell scripts to perform various tasks.</li>
-          <li>Installed, configured, and troubleshooted Jenkins servers for CI/CD pipeline implementation.</li>
-          <li>Managed AWS EC2 instances and utilized various AWS services; earned multiple AWS certifications.</li>
-          <li>Configured and managed network devices including routers and switches.</li>
+          <li>Managed over <strong>500 servers</strong> running diverse operating systems including RHEL, AIX, SUSE, Ubuntu, Debian, and Windows Server.</li>
+          <li>Implemented patches and updates via shell scripts and Ansible, ensuring system security and reducing vulnerability risks.</li>
+          <li>Installed and renewed SSL certificates; deployed Endpoint Detection and Response (EDR) solutions to enhance system security.</li>
+          <li>Monitored systems using Nagios and API monitoring tools; integrated Grafana and Prometheus for advanced visualization.</li>
+          <li>Developed comprehensive infrastructure documentation with Wiki.js and GitHub, streamlining team communication.</li>
+          <li>Engineered and maintained CI/CD pipelines using Jenkins, Travis CI, and integrated SonarQube for code quality.</li>
+          <li>Configured and maintained web servers with Nginx, Apache, and managed containerization using Docker, Podman, and Rancher Desktop.</li>
+          <li>Utilized ServiceNow for IT service management and operational support.</li>
         </ul>
       </div>
-
+      
       <!-- EY Experience -->
-      <div class="experience">
+      <div class="mb-4">
         <h3>System Engineer - EY <small class="text-muted">(Feb 2020 - May 2021)</small></h3>
-        <p>Software Support Specialist with strong experience in diagnosing and resolving software issues, providing top-tier support to users, and ensuring minimal downtime. Collaborated with development teams to address complex problems, and effectively escalated issues to vendors when necessary.</p>
+        <p>
+          Delivered top-tier software support by diagnosing and resolving issues promptly, reducing system downtime by <strong>30%</strong> and ensuring seamless business operations.
+        </p>
+        <p>
+          <strong>Software Support Specialist:</strong> Leveraged strong troubleshooting skills to resolve complex software issues, collaborated effectively with development teams, and escalated vendor-related challenges when necessary. Achieved faster resolution times and improved user satisfaction.
+        </p>
       </div>
 
       <!-- Netsoft Consulting Experience -->
-      <div class="experience">
+      <div class="mb-4">
         <h3>System Engineer - Netsoft Consulting Services (P) Ltd <small class="text-muted">(Dec 2018 - Feb 2020)</small></h3>
         <ul>
-          <li>Installed and maintained a wide range of software applications across different operating systems.</li>
-          <li>Managed day-to-day user problems and provided timely solutions.</li>
-          <li>Configured and troubleshooted network issues including VLAN, Wi-Fi controllers, Access Points, and LAN ports.</li>
-          <li>Handled IT infrastructure issues to ensure smooth operation of technology resources.</li>
+          <li>Installed, configured, and maintained diverse software applications and operating systems.</li>
+          <li>Diagnosed and resolved user issues with a focus on minimizing downtime and boosting operational efficiency.</li>
+          <li>Managed IT infrastructure effectively, ensuring smooth network and system operations.</li>
         </ul>
       </div>
 
       <!-- Quatrro Experience -->
-      <div class="experience">
+      <div>
         <h3>Solutions Engineer - Quatrro <small class="text-muted">(May 2018 - Dec 2018)</small></h3>
         <ul>
-          <li>Provided technical support to US customers through remote tools.</li>
-          <li>Managed ticketing tools for issue tracking and resolution.</li>
-          <li>Installed and maintained various software applications and operating systems.</li>
-          <li>Configured Microsoft Outlook for seamless email communication.</li>
-          <li>Supported application software and handled printer configuration and network support.</li>
+          <li>Provided proactive remote technical support for US-based customers, ensuring high satisfaction rates.</li>
+          <li>Configured Microsoft Outlook and performed efficient software/hardware troubleshooting to resolve user challenges.</li>
         </ul>
       </div>
     </section>
 
     <!-- Education -->
-    <section class="content-section">
-      <h2 class="section-title">Education</h2>
-      <div class="education">
+    <section class="content-section" id="education" aria-labelledby="education-heading">
+      <h2 class="section-title" id="education-heading">Education</h2>
+      <div>
         <p><strong>MCA</strong> - Jain University, Bangalore (2024)</p>
         <p><strong>BCA</strong> - Magadh University (2017)</p>
-        <p><strong>12th</strong> - Bihar (2014)</p>
-        <p><strong>10th</strong> - Bihar (2012)</p>
       </div>
     </section>
 
     <!-- Key Skills -->
-    <section class="content-section">
-      <h2 class="section-title">Key Skills</h2>
+    <section class="content-section" id="skills" aria-labelledby="skills-heading">
+      <h2 class="section-title" id="skills-heading">Key Skills</h2>
       <ul class="skills">
-        <li>Docker &amp; Docker Container</li>
+        <li>Docker &amp; Containers</li>
         <li>Kubernetes</li>
-        <li>Redhat Linux &amp; Linux Administration</li>
-        <li>NAGIOS</li>
-        <li>Windows System Administration</li>
-        <li>Extended Detection and Response (XDR)</li>
-        <li>Jenkins CI &amp; Travis CI</li>
-        <li>Ansible</li>
-        <li>Shell Scripting</li>
-        <li>Python, Flask, and Django Framework</li>
-        <li>DNS Server &amp; Networking</li>
-        <li>Github &amp; API Integration</li>
+        <li>Linux Administration</li>
+        <li>Nagios &amp; API Monitoring Tools</li>
+        <li>Windows Server Administration</li>
+        <li>Extended Detection &amp; Response (XDR)</li>
+        <li>CI/CD (Jenkins, Travis CI)</li>
+        <li>Ansible &amp; Shell Scripting</li>
+        <li>Python &amp; Django</li>
+        <li>HTML5 &amp; CSS3</li>
+        <li>GitHub Pages &amp; GitHub Actions</li>
+        <li>DNS &amp; Networking</li>
+        <li>GitHub &amp; API Integration</li>
+        <li>Node.js &amp; Express.js (Learning)</li>
+        <li>RESTful APIs &amp; Postman Testing</li>
+        <li>ServiceNow</li>
+        <li>Grafana &amp; Prometheus</li>
+        <li>Rancher Desktop</li>
+        <li>Podman</li>
+        <li>Nginx &amp; Apache</li>
+        <li>SonarQube</li>
       </ul>
     </section>
 
     <!-- Projects -->
-    <section class="content-section">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects">
+    <section class="content-section" id="projects" aria-labelledby="projects-heading">
+      <h2 class="section-title" id="projects-heading">Projects</h2>
+      <div class="mb-3">
         <p><strong>Exam Portal</strong> (6 Months)</p>
-        <p>Established an online platform to oversee exams, courses, questions, and results for students and administrators. <a href="https://github.com/sameeralam3127/Online-Exam-portal" class="custom-link">View on GitHub</a></p>
+        <p>
+          Developed an online platform to manage exams, courses, questions, and results. This initiative improved exam processing speed by <strong>25%</strong> and enhanced user experience.
+          <a href="https://github.com/sameeralam3127/Online-Exam-portal" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </p>
       </div>
-      <div class="projects">
+      <div class="mb-3">
         <p><strong>LMS Project</strong> (6 Months)</p>
-        <p>Developed a Learning Management System with Django, offering course, student, and instructor management. <a href="https://github.com/sameeralam3127/lms-project" class="custom-link">View on GitHub</a></p>
+        <p>
+          Engineered a comprehensive Learning Management System with Django, streamlining course, student, and instructor management. The system increased process efficiency and provided intuitive user navigation.
+          <a href="https://github.com/sameeralam3127/lms-project" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Dynamic Web App</strong> (6 Months)</p>
+        <p>
+          Developed a fully responsive web application using Python, Django, HTML, and CSS. The site is hosted on GitHub Pages with automated deployments via GitHub Actions. Integrated RESTful APIs and utilized Postman for API testing.
+          <a href="https://github.com/sameeralam3127/lms-project" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </p>
+      </div>
+      <div>
+        <p><strong>CI/CD Pipeline Automation</strong> (4 Months)</p>
+        <p>
+          Engineered an automated CI/CD pipeline leveraging GitHub Actions, streamlining the development and deployment processes for various projects. This setup enhanced code integration and delivery efficiency.
+          <a href="https://github.com/sameeralam3127/Devops-automation" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </p>
       </div>
     </section>
 
     <!-- Certifications -->
-    <section class="content-section">
-      <h2 class="section-title">Certification</h2>
-      <p>Cybersecurity Essentials</p>
+    <section class="content-section" id="certifications" aria-labelledby="certifications-heading">
+      <h2 class="section-title" id="certifications-heading">Certifications</h2>
+      <div class="row g-3">
+        <!-- Always Visible Cards -->
+        <div class="col-md-6">
+          <div class="card certification-card">
+            <div class="card-body">
+              <h5 class="card-title">Monitor and Manage Google Cloud Resources Skill Badge</h5>
+              <p class="card-text mb-1"><strong>Issuer:</strong> Google</p>
+              <p class="card-text mb-1"><strong>Issued:</strong> Oct 2024</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card certification-card">
+            <div class="card-body">
+              <h5 class="card-title">The Basics of Google Cloud Compute Skill Badge</h5>
+              <p class="card-text mb-1"><strong>Issuer:</strong> Google</p>
+              <p class="card-text mb-1"><strong>Issued:</strong> Oct 2024</p>
+            </div>
+          </div>
+        </div>
+        <!-- Hidden Certificate Cards -->
+        <div id="moreCerts" style="display: none; width: 100%;">
+          <!-- AWS Knowledge: Cloud Essentials -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">AWS Knowledge: Cloud Essentials</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Amazon Web Services (AWS)</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Jan 2024</p>
+              </div>
+            </div>
+          </div>
+          <!-- AWS Knowledge: Architecting -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">AWS Knowledge: Architecting</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Amazon Web Services (AWS)</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Oct 2023</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pen Testing, Incident Response & Forensics -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Pen Testing, Incident Response & Forensics</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> IBM</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Sep 2023</p>
+              </div>
+            </div>
+          </div>
+          <!-- Networking Essentials -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Networking Essentials</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Cisco</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Feb 2023</p>
+              </div>
+            </div>
+          </div>
+          <!-- AWS Cloud Quest: Cloud Practitioner -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">AWS Cloud Quest: Cloud Practitioner</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Amazon Web Services (AWS)</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Dec 2022</p>
+              </div>
+            </div>
+          </div>
+          <!-- Docker Essentials: A Developer Introduction -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Docker Essentials: A Developer Introduction</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> IBM</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Nov 2022</p>
+              </div>
+            </div>
+          </div>
+          <!-- Cloud Core -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Cloud Core</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> IBM</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Sep 2021</p>
+              </div>
+            </div>
+          </div>
+          <!-- IBM Cloud Essentials -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">IBM Cloud Essentials</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> IBM</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Sep 2021</p>
+              </div>
+            </div>
+          </div>
+          <!-- Cybersecurity Essentials -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Cybersecurity Essentials</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Cisco</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Nov 2020</p>
+              </div>
+            </div>
+          </div>
+          <!-- Introduction to Cybersecurity -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Introduction to Cybersecurity</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Cisco</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Nov 2020</p>
+              </div>
+            </div>
+          </div>
+          <!-- Apsara Clouder Certification -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Apsara Clouder - Cloud Computing Specialist Certification</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Alibaba Cloud</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Oct 2020 · Expired Oct 2022</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> ACLC03201000037934</p>
+              </div>
+            </div>
+          </div>
+          <!-- CyberArk Certified Level 1: Trustee Exam -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">CyberArk Certified Level 1: Trustee Exam</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> CyberArk</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Oct 2020</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> b0d6c042-88a7-3635-874b-8eb3ee3d5544</p>
+              </div>
+            </div>
+          </div>
+          <!-- CEFR level B1 -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">CEFR level B1</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> British Council</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Jun 2020 · Expired Jun 2021</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> f04f98c2</p>
+              </div>
+            </div>
+          </div>
+          <!-- Digital Marketing -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Digital Marketing</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Accenture</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Jun 2020</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> 9bhznd3</p>
+              </div>
+            </div>
+          </div>
+          <!-- NSE-1 Network Security Associate -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">NSE-1 Network Security Associate</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Fortinet</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> May 2020 · Expired May 2022</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> i5NVhiBGEi</p>
+              </div>
+            </div>
+          </div>
+          <!-- NSE-2 Network Security Associate -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">NSE-2 Network Security Associate</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Fortinet</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> May 2020 · Expired May 2022</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> v8EpvoHmls</p>
+              </div>
+            </div>
+          </div>
+          <!-- Security Certified Network Specialist (SCNS) -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Security Certified Network Specialist (SCNS)</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> DefensityOne</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> May 2020</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> 17679494</p>
+              </div>
+            </div>
+          </div>
+          <!-- AWS Solutions Architect Associate -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Amazon Web Services Solutions Architect Associate</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Udemy</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Apr 2020</p>
+              </div>
+            </div>
+          </div>
+          <!-- Masters of Network Administrations-MNA -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">Masters of Network Administrations-MNA</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Jetking Infotrain Limited</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> Apr 2018</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> JK-DE-CT-00378</p>
+              </div>
+            </div>
+          </div>
+          <!-- C Programming -->
+          <div class="col-md-6">
+            <div class="card certification-card">
+              <div class="card-body">
+                <h5 class="card-title">C Programming</h5>
+                <p class="card-text mb-1"><strong>Issuer:</strong> Spoken Tutorial, IIT Bombay</p>
+                <p class="card-text mb-1"><strong>Issued:</strong> May 2016</p>
+                <p class="card-text mb-1"><strong>Credential ID:</strong> 610884EDMJ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Toggle Button -->
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" id="toggleCerts">Show More</button>
+      </div>
     </section>
-
-    <!-- Personal Information -->
-    <section class="content-section">
-      <h2 class="section-title">Personal Information</h2>
-      <p><strong>City:</strong> Bengaluru</p>
-      <p><strong>Country:</strong> INDIA</p>
+    
+    <!-- Contact & Social -->
+    <section class="content-section" id="contact" aria-labelledby="contact-heading">
+      <h2 class="section-title" id="contact-heading">Contact &amp; Social</h2>
+      <p><strong>Location:</strong> Bengaluru, India</p>
       <p><strong>Languages:</strong> English, Hindi</p>
-      <p><strong>Contact:</strong> +91 9905850877 | <a href="mailto:sameeralam3127@gmail.com" class="custom-link">sameeralam3127@gmail.com</a></p>
-      <p class="custom-link"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sameer-alam-9a0162111/" target="_blank">linkedin.com/in/sameer-alam-9a0162111</a></p>
-      <p class="custom-link"><strong>Website:</strong> <a href="https://www.computecentral.in/" target="_blank">computecentral.in</a></p>
+      <p>
+        <strong>Phone:</strong> 
+        <a href="tel:+919905850877" aria-label="Call Sameer Alam">
+          <i class="bi bi-telephone"></i> +91 9905850877
+        </a>
+      </p>
+      <p>
+        <strong>Email:</strong> 
+        <a href="mailto:sameeralam3127@gmail.com" aria-label="Send an email to Sameer Alam">
+          <i class="bi bi-envelope"></i> sameeralam3127@gmail.com
+        </a>
+      </p>
+      <p>
+        <strong>GitHub:</strong> 
+        <a href="https://github.com/sameeralam3127" target="_blank" rel="noopener noreferrer" aria-label="Visit Sameer Alam's GitHub">
+          <i class="bi bi-github"></i> sameeralam3127
+        </a>
+      </p>
+      <p>
+        <strong>LinkedIn:</strong> 
+        <a href="https://www.linkedin.com/in/sameer-alam-9a0162111/" target="_blank" rel="noopener noreferrer" aria-label="Visit Sameer Alam's LinkedIn">
+          <i class="bi bi-linkedin"></i> Sameer Alam
+        </a>
+      </p>
+      <p>
+        <strong>Website:</strong> 
+        <a href="https://www.computecentral.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit Sameer Alam's Website">
+          <i class="bi bi-globe"></i> computecentral.in
+        </a>
+      </p>
     </section>
-  </div>
+  </main>
 
-  <!-- Bootstrap JS and dependencies (optional) -->
+  <!-- Back-to-Top Button -->
+  <button id="backToTop" title="Back to Top" aria-label="Scroll back to top">&#8679;</button>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sameer Alam. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS for Back-to-Top -->
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  <!-- Toggle Certifications JS -->
+  <script>
+    document.getElementById('toggleCerts').addEventListener('click', function() {
+      var moreCerts = document.getElementById('moreCerts');
+      if (moreCerts.style.display === 'none' || moreCerts.style.display === '') {
+        moreCerts.style.display = 'flex';
+        moreCerts.style.flexWrap = 'wrap';
+        this.textContent = 'Show Less';
+      } else {
+        moreCerts.style.display = 'none';
+        this.textContent = 'Show More';
+      }
+    });
+  </script>
 </body>
 </html>
