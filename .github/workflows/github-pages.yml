@@ -28,14 +28,17 @@ jobs:
           # Add your build steps here
           # Example: npm install && npm run build
           # Or for Jekyll: bundle install && bundle exec jekyll build
-          echo "Site build step goes here"
+          mkdir -p public  # Ensure output directory exists
+          echo "<h1>My GitHub Pages Site</h1>" > public/index.html  # Temporary test content
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: ./public 
+          path: public  # Ensure this matches your build output directory
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          artifact_name: github-pages  # Match the artifact name
