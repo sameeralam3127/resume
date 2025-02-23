@@ -1,31 +1,25 @@
-name: Deploy GitHub Pages
+name: Deploy HTML to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Runs when changes are pushed to main
+
+  workflow_dispatch:  # Allows manual trigger
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
+        uses: actions/checkout@v4
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          branch: gh-pages  # Deploy to this branch
+          folder: .  # Deploy everything in the repo (HTML, CSS, etc.)
